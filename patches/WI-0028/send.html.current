@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>888 - 문자발송</title>
+  <link rel="stylesheet" href="/assets/css/main.css?v=20260226_225841" />
+<link rel="stylesheet" href="/assets/css/send_2x2.css?v=20260227_094116" />
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="/">888</a>
+
+    <nav class="nav">
+      <a href="/send.html">문자발송</a>
+      <a href="/addr.html">주소록</a>
+      <a href="/result.html">전송결과</a>
+      <a href="/charge.html">충전하기</a>
+
+      <!-- ===== 기업용 확장 메뉴 (비활성) ===== -->
+      <!-- <a href="/statistics.html">통계</a> -->
+      <!-- <a href="/api.html">API연동</a> -->
+      <!-- <a href="/admin.html">관리자</a> -->
+      <!-- <a href="/audit.html">감사로그</a> -->
+    </nav>
+
+    <div class="header-actions">
+      <a class="btn btn-primary" href="/login.html">로그인</a>
+    </div>
+  </div>
+</header>
+
+<main class="site-main">
+  
+
+  <section>
+    <div class="container">
+      <div class="grid2">
+
+        <!-- LEFT -->
+        <div class="panel" style="padding:26px">
+
+          <div style="display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:flex-end">
+            <div style="font-weight:950">수신번호 입력</div>
+            <div style="opacity:.6;font-size:13px">
+              붙여넣기 최대 <b id="maxPaste">-</b>건 · 엑셀 최대 <b id="maxExcel">-</b>건
+            </div>
+          </div>
+
+          <div class="tabs" style="margin-top:12px">
+            <button class="tab on" data-tab="manual">직접작성</button>
+            <button class="tab" data-tab="paste">붙여넣기</button>
+            <button class="tab" data-tab="excel">엑셀 업로드</button>
+          </div>
+
+          <div class="tabpane on" id="tab-manual" style="margin-top:12px">
+            <div style="display:grid;grid-template-columns:1fr 140px;gap:10px;align-items:end">
+              <div>
+                <div class="lbl">번호 입력</div>
+                <input id="manualInput" class="inp" type="text" placeholder="예) 01012345678" />
+              </div>
+              <button id="manualAdd" class="btn" type="button">추가</button>
+            </div>
+            <div style="margin-top:10px;opacity:.65;font-size:13px">* 번호만 입력하면 자동 정리(하이픈 제거)됩니다.</div>
+          </div>
+
+          <div class="tabpane" id="tab-paste" style="margin-top:12px">
+            <div class="lbl">여러 건 붙여넣기</div>
+            <textarea id="pasteArea" class="txt" style="min-height:130px" placeholder="01011112222&#10;01033334444&#10;(줄바꿈/쉼표/공백 가능)"></textarea>
+            <div style="margin-top:10px;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap">
+              <div style="opacity:.65;font-size:13px">현재 추출 <b id="pasteCount">0</b>건</div>
+              <button id="pasteApply" class="btn" type="button">적용</button>
+            </div>
+          </div>
+
+          <div class="tabpane" id="tab-excel" style="margin-top:12px">
+            <div class="lbl">엑셀 업로드 (.xlsx)</div>
+            <input id="excelFile" class="inp" type="file" accept=".xlsx" />
+            <div style="margin-top:10px;opacity:.65;font-size:13px">* 1열(A)에 전화번호만 있다고 가정(나중에 규칙 확장 가능)</div>
+            <div style="margin-top:12px;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap">
+              <div style="opacity:.65;font-size:13px">현재 추출 <b id="excelCount">0</b>건</div>
+              <button id="excelApply" class="btn" type="button" disabled style="opacity:.55;cursor:not-allowed">적용(준비중)</button>
+            </div>
+          </div>
+
+          <div style="margin-top:18px">
+            <div style="display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:flex-end">
+              <div style="font-weight:950">수신자 목록</div>
+              <div style="opacity:.65;font-size:13px">총 <b id="toCount">0</b>건</div>
+            </div>
+
+            <div class="panel" style="margin-top:10px;padding:14px;border-radius:18px;background:rgba(255,255,255,.03)">
+              <div id="toList" style="display:flex;flex-wrap:wrap;gap:8px"></div>
+              <div id="toEmpty" style="opacity:.55">수신번호를 추가하세요.</div>
+              <div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap">
+                <a class="btn" href="/addr.html">주소록에서 선택</a>
+                <button id="clearTo" class="btn" type="button">전체삭제</button>
+              </div>
+            </div>
+          </div>
+
+          <div style="margin-top:18px">
+            <div style="display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:flex-end">
+              <div style="font-weight:950">메시지</div>
+              <div style="opacity:.65;font-size:13px">
+                바이트 <b id="byteNow">0</b> / <b id="byteLimit">문서확정필요</b> (초과 시 분할발송)
+              </div>
+            </div>
+
+            <textarea id="msg" class="txt" style="min-height:180px;margin-top:10px" placeholder="메시지 내용을 입력"></textarea>
+
+            <div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap;align-items:center;justify-content:space-between">
+              <div style="opacity:.6;font-size:13px">보안 정책: 메시지 원문 저장 없음(연동앱에서 처리)</div>
+              <div style="display:flex;gap:10px;flex-wrap:wrap">
+                <button id="btnTest" class="btn" type="button">테스트 발송</button>
+                <button id="btnSend" class="btn btn-primary" type="button">문자 발송</button>
+              </div>
+            </div>
+
+            <div class="panel" style="margin-top:14px;padding:14px;border-radius:18px;background:rgba(255,255,255,.03)">
+              <div style="display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap">
+                <div style="font-weight:950">테스트 상태</div>
+                <div id="testTimer" style="opacity:.7">대기</div>
+              </div>
+              <div style="margin-top:10px;display:grid;gap:8px">
+                <div class="rowline"><span class="badge">T1</span> <span id="t1">-</span></div>
+                <div class="rowline"><span class="badge">T2</span> <span id="t2">-</span></div>
+                <div class="rowline"><span class="badge">T3</span> <span id="t3">-</span></div>
+              </div>
+            </div>
+
+            <div class="panel" style="margin-top:14px;padding:14px;border-radius:18px;background:rgba(255,255,255,.03)">
+              <div style="font-weight:950;margin-bottom:10px">최근 테스트 (최대 3개)</div>
+              <div id="testHistory" style="display:grid;gap:10px;opacity:.85"></div>
+              <div id="testHistoryEmpty" style="opacity:.55">기록 없음</div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- RIGHT -->
+        <div style="display:flex;flex-direction:column;gap:22px">
+          <div class="panel grid" style="padding:22px">
+            <div style="font-weight:950;margin-bottom:12px">Preview</div>
+            <div class="phone">
+              <div class="phone-top"><div class="phone-notch"></div></div>
+              <div class="phone-screen">
+                <div class="phone-title">Message</div>
+                <div class="bubble" id="previewBubble">내용을 입력하면 미리보기가 표시됩니다.</div>
+              </div>
+              <div class="phone-bottom"></div>
+            </div>
+            <div style="margin-top:12px;opacity:.65;font-size:13px">* 실제 폰 화면과 100% 동일하진 않지만 “보이는 느낌”은 맞춤</div>
+          </div>
+
+          <div class="panel" style="padding:22px">
+            <div style="font-weight:950;margin-bottom:10px">Rules</div>
+            <div style="opacity:.7;line-height:1.75">
+              • 번호 입력: 직접/붙여넣기/엑셀 업로드<br/>
+              • 붙여넣기/엑셀 최대 건수 초과 시 차단<br/>
+              • 바이트 초과 시 분할발송(연동앱 정책)<br/>
+              • 테스트는 40초 제한(미응답=실패)<br/>
+              • 최근 테스트 3건만 저장
+            </div>
+          </div>
+
+          <div class="panel" style="padding:22px">
+            <div style="font-weight:950;margin-bottom:10px">Secure Contact</div>
+            <a class="btn btn-primary" href="https://t.me/Dr_simpson_99" target="_blank" rel="noopener noreferrer" style="width:100%">텔레그램 상담 연결</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+<section><div class="container"><div class="panel" style="padding:18px;display:flex;gap:10px;justify-content:flex-end;flex-wrap:wrap">
+<button id="btnTest" class="btn" type="button" onclick="alert("CLICK OK: TEST")">테스트 발송</button>
+<button id="btnSend" class="btn btn-primary" type="button" onclick="alert("CLICK OK: SEND")">문자 발송</button>
+</div></div></section>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div class="footer-left">
+      <div class="footer-brand">888</div>
+      <div class="footer-meta"><span>© 888 All rights reserved.</span></div>
+    </div>
+    <div class="footer-right">
+      <a class="btn btn-primary" href="https://t.me/Dr_simpson_99" target="_blank" rel="noopener noreferrer">텔레그램 상담</a>
+    </div>
+  </div>
+</footer>
+
+<script src="/assets/js/sections.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+<script src="/assets/js/send.js"></script>
+<script src="/assets/js/clickprobe.js"></script>
+<script src="/assets/js/send_patch.js"></script>
+<script src="/assets/js/send_2x2.js?v=20260227_094116"></script>
+</body>
+</html>
+<!--MARKER_SEND_HTML_20260226_224921-->
+<!--MARKER_CHECK_20260227_133232-->

@@ -1,7 +1,7 @@
 {
   "project": "99sms-aiops-tool",
-  "conversation_summary": "WI-0001: 테스트: WI 폴더 생성 확인용. QA/Front/Back 문서 만들어\nWI-0002: 테스트: WI 생성 확인. 문서 만들어\nWI-0003: ㄴ\nWI-0004: hi777\nWI-0005: status\nWI-0006: s\nWI-0007: s\nWI-0008: s\nWI-0009: hi888\\\nWI-0010: hi888\nWI-0011: 1\nWI-0012: /pr\nWI-0013: /pr\nWI-0014: 1\nWI-0015: `1",
-  "wi_seq": 15,
+  "conversation_summary": "WI-0001: 테스트: WI 폴더 생성 확인용. QA/Front/Back 문서 만들어\nWI-0002: 테스트: WI 생성 확인. 문서 만들어\nWI-0003: ㄴ\nWI-0004: hi777\nWI-0005: status\nWI-0006: s\nWI-0007: s\nWI-0008: s\nWI-0009: hi888\\\nWI-0010: hi888\nWI-0011: 1\nWI-0012: /pr\nWI-0013: /pr\nWI-0014: 1\nWI-0015: `1\nWI-0016: /pr WI-0024-1|auth retry test\nWI-0017: /pr WI-0025|final fix test\nWI-0018: /pr WI-0025-1|auto stash test\nWI-0019: /pr WI-0025-1|auto stash test\nWI-0020: di\nWI-0021: /status\nWI-0022: /status\nWI-0023: AUTO-DIAG: send.html 버튼 클릭 안됨. send.html/send.js/send_patch.js에서 클릭 이벤트/버튼 요소/스크립트 로딩 상태를 자동 추출해서 DIAG.md로 저장해.\nWI-0024: I-0023/FINAL.patch.md\n[OK] wrote patches/WI-0023/DIAG.md\n[OK] now check Telegram: /status\nroot@won:~/aiops-tool#\nWI-0025: /status\nWI-0026: AUTO-DIAG: send.html 버튼 클릭 안됨. send.html/send.js/send_patch.js에서 클릭 이벤트/버튼 요소/스크립트 로딩 상태를 자동 추출해서 DIAG.md로 저장해.\nWI-0027: AUTO-DIAG: send.html 버튼 클릭 안됨. send.html/send.js/send_patch.js에서 클릭 이벤트/버튼 요소/스크립트 로딩 상태를 자동 추출해서 DIAG.md로 저장해.\nWI-0028: AUTO-DIAG: send.html 버튼 클릭 안됨. send.html/send.js/send_patch.js에서 클릭 이벤트/버튼 요소/스크립트 로딩 상태를 자동 추출해서 DIAG.md로 저장해.",
+  "wi_seq": 28,
   "open_items": [
     {
       "id": "WI-0001",
@@ -92,6 +92,84 @@
       "status": "DONE",
       "created_at": "2026-03-02T04:42:18.931833Z",
       "request": "`1"
+    },
+    {
+      "id": "WI-0016",
+      "status": "DONE",
+      "created_at": "2026-03-02T05:58:17.226171Z",
+      "request": "/pr WI-0024-1|auth retry test"
+    },
+    {
+      "id": "WI-0017",
+      "status": "DONE",
+      "created_at": "2026-03-02T05:59:58.067757Z",
+      "request": "/pr WI-0025|final fix test"
+    },
+    {
+      "id": "WI-0018",
+      "status": "DONE",
+      "created_at": "2026-03-02T06:02:53.493282Z",
+      "request": "/pr WI-0025-1|auto stash test"
+    },
+    {
+      "id": "WI-0019",
+      "status": "DONE",
+      "created_at": "2026-03-02T06:02:56.806383Z",
+      "request": "/pr WI-0025-1|auto stash test"
+    },
+    {
+      "id": "WI-0020",
+      "status": "DONE",
+      "created_at": "2026-03-02T08:55:30.538373Z",
+      "request": "di"
+    },
+    {
+      "id": "WI-0021",
+      "status": "DONE",
+      "created_at": "2026-03-02T08:55:52.677099Z",
+      "request": "/status"
+    },
+    {
+      "id": "WI-0022",
+      "status": "DONE",
+      "created_at": "2026-03-02T08:55:59.411325Z",
+      "request": "/status"
+    },
+    {
+      "id": "WI-0023",
+      "status": "DONE",
+      "created_at": "2026-03-02T09:31:59.488046Z",
+      "request": "AUTO-DIAG: send.html 버튼 클릭 안됨. send.html/send.js/send_patch.js에서 클릭 이벤트/버튼 요소/스크립트 로딩 상태를 자동 추출해서 DIAG.md로 저장해."
+    },
+    {
+      "id": "WI-0024",
+      "status": "DONE",
+      "created_at": "2026-03-02T09:32:19.963546Z",
+      "request": "I-0023/FINAL.patch.md\n[OK] wrote patches/WI-0023/DIAG.md\n[OK] now check Telegram: /status\nroot@won:~/aiops-tool#"
+    },
+    {
+      "id": "WI-0025",
+      "status": "DONE",
+      "created_at": "2026-03-02T09:32:24.098219Z",
+      "request": "/status"
+    },
+    {
+      "id": "WI-0026",
+      "status": "DONE",
+      "created_at": "2026-03-02T09:41:05.577240Z",
+      "request": "AUTO-DIAG: send.html 버튼 클릭 안됨. send.html/send.js/send_patch.js에서 클릭 이벤트/버튼 요소/스크립트 로딩 상태를 자동 추출해서 DIAG.md로 저장해."
+    },
+    {
+      "id": "WI-0027",
+      "status": "DONE",
+      "created_at": "2026-03-02T09:41:15.030245Z",
+      "request": "AUTO-DIAG: send.html 버튼 클릭 안됨. send.html/send.js/send_patch.js에서 클릭 이벤트/버튼 요소/스크립트 로딩 상태를 자동 추출해서 DIAG.md로 저장해."
+    },
+    {
+      "id": "WI-0028",
+      "status": "DONE",
+      "created_at": "2026-03-02T09:42:41.433929Z",
+      "request": "AUTO-DIAG: send.html 버튼 클릭 안됨. send.html/send.js/send_patch.js에서 클릭 이벤트/버튼 요소/스크립트 로딩 상태를 자동 추출해서 DIAG.md로 저장해."
     }
   ],
   "decisions": [],
@@ -230,6 +308,123 @@
       },
       "dir": "patches/WI-0015",
       "ts": "2026-03-02T04:42:18.932891Z"
+    },
+    "WI-0016": {
+      "route": {
+        "qa": true,
+        "front": true,
+        "back": true
+      },
+      "dir": "patches/WI-0016",
+      "ts": "2026-03-02T05:58:17.227247Z"
+    },
+    "WI-0017": {
+      "route": {
+        "qa": true,
+        "front": true,
+        "back": true
+      },
+      "dir": "patches/WI-0017",
+      "ts": "2026-03-02T05:59:58.068890Z"
+    },
+    "WI-0018": {
+      "route": {
+        "qa": true,
+        "front": true,
+        "back": true
+      },
+      "dir": "patches/WI-0018",
+      "ts": "2026-03-02T06:02:53.494429Z"
+    },
+    "WI-0019": {
+      "route": {
+        "qa": true,
+        "front": true,
+        "back": true
+      },
+      "dir": "patches/WI-0019",
+      "ts": "2026-03-02T06:02:56.807562Z"
+    },
+    "WI-0020": {
+      "route": {
+        "qa": true,
+        "front": true,
+        "back": true
+      },
+      "dir": "patches/WI-0020",
+      "ts": "2026-03-02T08:55:30.539590Z"
+    },
+    "WI-0021": {
+      "route": {
+        "qa": true,
+        "front": true,
+        "back": true
+      },
+      "dir": "patches/WI-0021",
+      "ts": "2026-03-02T08:55:52.678340Z"
+    },
+    "WI-0022": {
+      "route": {
+        "qa": true,
+        "front": true,
+        "back": true
+      },
+      "dir": "patches/WI-0022",
+      "ts": "2026-03-02T08:55:59.412582Z"
+    },
+    "WI-0023": {
+      "route": {
+        "qa": true,
+        "front": true,
+        "back": false
+      },
+      "dir": "patches/WI-0023",
+      "ts": "2026-03-02T09:31:59.489357Z"
+    },
+    "WI-0024": {
+      "route": {
+        "qa": true,
+        "front": true,
+        "back": true
+      },
+      "dir": "patches/WI-0024",
+      "ts": "2026-03-02T09:32:19.964836Z"
+    },
+    "WI-0025": {
+      "route": {
+        "qa": true,
+        "front": true,
+        "back": true
+      },
+      "dir": "patches/WI-0025",
+      "ts": "2026-03-02T09:32:24.099527Z"
+    },
+    "WI-0026": {
+      "route": {
+        "qa": true,
+        "front": true,
+        "back": false
+      },
+      "dir": "patches/WI-0026",
+      "ts": "2026-03-02T09:41:05.578541Z"
+    },
+    "WI-0027": {
+      "route": {
+        "qa": true,
+        "front": true,
+        "back": false
+      },
+      "dir": "patches/WI-0027",
+      "ts": "2026-03-02T09:41:15.031534Z"
+    },
+    "WI-0028": {
+      "route": {
+        "qa": true,
+        "front": true,
+        "back": false
+      },
+      "dir": "patches/WI-0028",
+      "ts": "2026-03-02T09:42:41.435302Z"
     }
   },
   "history": [
@@ -501,6 +696,240 @@
       "payload": {
         "id": "WI-0015",
         "dir": "patches/WI-0015"
+      }
+    },
+    {
+      "ts": "2026-03-02T05:58:17.226185Z",
+      "kind": "wi_created",
+      "payload": {
+        "id": "WI-0016",
+        "status": "DONE",
+        "created_at": "2026-03-02T05:58:17.226171Z",
+        "request": "/pr WI-0024-1|auth retry test"
+      }
+    },
+    {
+      "ts": "2026-03-02T05:58:17.227262Z",
+      "kind": "wi_done",
+      "payload": {
+        "id": "WI-0016",
+        "dir": "patches/WI-0016"
+      }
+    },
+    {
+      "ts": "2026-03-02T05:59:58.067776Z",
+      "kind": "wi_created",
+      "payload": {
+        "id": "WI-0017",
+        "status": "DONE",
+        "created_at": "2026-03-02T05:59:58.067757Z",
+        "request": "/pr WI-0025|final fix test"
+      }
+    },
+    {
+      "ts": "2026-03-02T05:59:58.068905Z",
+      "kind": "wi_done",
+      "payload": {
+        "id": "WI-0017",
+        "dir": "patches/WI-0017"
+      }
+    },
+    {
+      "ts": "2026-03-02T06:02:53.493296Z",
+      "kind": "wi_created",
+      "payload": {
+        "id": "WI-0018",
+        "status": "DONE",
+        "created_at": "2026-03-02T06:02:53.493282Z",
+        "request": "/pr WI-0025-1|auto stash test"
+      }
+    },
+    {
+      "ts": "2026-03-02T06:02:53.494444Z",
+      "kind": "wi_done",
+      "payload": {
+        "id": "WI-0018",
+        "dir": "patches/WI-0018"
+      }
+    },
+    {
+      "ts": "2026-03-02T06:02:56.806396Z",
+      "kind": "wi_created",
+      "payload": {
+        "id": "WI-0019",
+        "status": "DONE",
+        "created_at": "2026-03-02T06:02:56.806383Z",
+        "request": "/pr WI-0025-1|auto stash test"
+      }
+    },
+    {
+      "ts": "2026-03-02T06:02:56.807577Z",
+      "kind": "wi_done",
+      "payload": {
+        "id": "WI-0019",
+        "dir": "patches/WI-0019"
+      }
+    },
+    {
+      "ts": "2026-03-02T08:55:30.538387Z",
+      "kind": "wi_created",
+      "payload": {
+        "id": "WI-0020",
+        "status": "DONE",
+        "created_at": "2026-03-02T08:55:30.538373Z",
+        "request": "di"
+      }
+    },
+    {
+      "ts": "2026-03-02T08:55:30.539605Z",
+      "kind": "wi_done",
+      "payload": {
+        "id": "WI-0020",
+        "dir": "patches/WI-0020"
+      }
+    },
+    {
+      "ts": "2026-03-02T08:55:52.677112Z",
+      "kind": "wi_created",
+      "payload": {
+        "id": "WI-0021",
+        "status": "DONE",
+        "created_at": "2026-03-02T08:55:52.677099Z",
+        "request": "/status"
+      }
+    },
+    {
+      "ts": "2026-03-02T08:55:52.678355Z",
+      "kind": "wi_done",
+      "payload": {
+        "id": "WI-0021",
+        "dir": "patches/WI-0021"
+      }
+    },
+    {
+      "ts": "2026-03-02T08:55:59.411339Z",
+      "kind": "wi_created",
+      "payload": {
+        "id": "WI-0022",
+        "status": "DONE",
+        "created_at": "2026-03-02T08:55:59.411325Z",
+        "request": "/status"
+      }
+    },
+    {
+      "ts": "2026-03-02T08:55:59.412598Z",
+      "kind": "wi_done",
+      "payload": {
+        "id": "WI-0022",
+        "dir": "patches/WI-0022"
+      }
+    },
+    {
+      "ts": "2026-03-02T09:31:59.488060Z",
+      "kind": "wi_created",
+      "payload": {
+        "id": "WI-0023",
+        "status": "DONE",
+        "created_at": "2026-03-02T09:31:59.488046Z",
+        "request": "AUTO-DIAG: send.html 버튼 클릭 안됨. send.html/send.js/send_patch.js에서 클릭 이벤트/버튼 요소/스크립트 로딩 상태를 자동 추출해서 DIAG.md로 저장해."
+      }
+    },
+    {
+      "ts": "2026-03-02T09:31:59.489373Z",
+      "kind": "wi_done",
+      "payload": {
+        "id": "WI-0023",
+        "dir": "patches/WI-0023"
+      }
+    },
+    {
+      "ts": "2026-03-02T09:32:19.963559Z",
+      "kind": "wi_created",
+      "payload": {
+        "id": "WI-0024",
+        "status": "DONE",
+        "created_at": "2026-03-02T09:32:19.963546Z",
+        "request": "I-0023/FINAL.patch.md\n[OK] wrote patches/WI-0023/DIAG.md\n[OK] now check Telegram: /status\nroot@won:~/aiops-tool#"
+      }
+    },
+    {
+      "ts": "2026-03-02T09:32:19.964852Z",
+      "kind": "wi_done",
+      "payload": {
+        "id": "WI-0024",
+        "dir": "patches/WI-0024"
+      }
+    },
+    {
+      "ts": "2026-03-02T09:32:24.098233Z",
+      "kind": "wi_created",
+      "payload": {
+        "id": "WI-0025",
+        "status": "DONE",
+        "created_at": "2026-03-02T09:32:24.098219Z",
+        "request": "/status"
+      }
+    },
+    {
+      "ts": "2026-03-02T09:32:24.099542Z",
+      "kind": "wi_done",
+      "payload": {
+        "id": "WI-0025",
+        "dir": "patches/WI-0025"
+      }
+    },
+    {
+      "ts": "2026-03-02T09:41:05.577253Z",
+      "kind": "wi_created",
+      "payload": {
+        "id": "WI-0026",
+        "status": "DONE",
+        "created_at": "2026-03-02T09:41:05.577240Z",
+        "request": "AUTO-DIAG: send.html 버튼 클릭 안됨. send.html/send.js/send_patch.js에서 클릭 이벤트/버튼 요소/스크립트 로딩 상태를 자동 추출해서 DIAG.md로 저장해."
+      }
+    },
+    {
+      "ts": "2026-03-02T09:41:05.578557Z",
+      "kind": "wi_done",
+      "payload": {
+        "id": "WI-0026",
+        "dir": "patches/WI-0026"
+      }
+    },
+    {
+      "ts": "2026-03-02T09:41:15.030258Z",
+      "kind": "wi_created",
+      "payload": {
+        "id": "WI-0027",
+        "status": "DONE",
+        "created_at": "2026-03-02T09:41:15.030245Z",
+        "request": "AUTO-DIAG: send.html 버튼 클릭 안됨. send.html/send.js/send_patch.js에서 클릭 이벤트/버튼 요소/스크립트 로딩 상태를 자동 추출해서 DIAG.md로 저장해."
+      }
+    },
+    {
+      "ts": "2026-03-02T09:41:15.031549Z",
+      "kind": "wi_done",
+      "payload": {
+        "id": "WI-0027",
+        "dir": "patches/WI-0027"
+      }
+    },
+    {
+      "ts": "2026-03-02T09:42:41.433943Z",
+      "kind": "wi_created",
+      "payload": {
+        "id": "WI-0028",
+        "status": "DONE",
+        "created_at": "2026-03-02T09:42:41.433929Z",
+        "request": "AUTO-DIAG: send.html 버튼 클릭 안됨. send.html/send.js/send_patch.js에서 클릭 이벤트/버튼 요소/스크립트 로딩 상태를 자동 추출해서 DIAG.md로 저장해."
+      }
+    },
+    {
+      "ts": "2026-03-02T09:42:41.435318Z",
+      "kind": "wi_done",
+      "payload": {
+        "id": "WI-0028",
+        "dir": "patches/WI-0028"
       }
     }
   ]

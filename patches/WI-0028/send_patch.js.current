@@ -1,0 +1,127 @@
+/* DEBUG_PASTE_V1 */
+
+(function(){
+  "use strict";
+
+  const MAX_LIMIT = 50;
+  const STORE = (window.__TO_STORE = window.__TO_STORE || new Set());
+  let alerted = false;
+
+  function $(q){ return document.querySelector(q); }
+  function $all(q){ return Array.from(document.querySelectorAll(q)); }
+
+  function extractPhones(text){
+    const m = String(text||"").match(/\\d{10,14}/g);
+    if(!m) return [];
+    return Array.from(new Set(m));
+  }
+
+  function findCountEl(){
+    return $all("body *").find(e => /^총\\s*\\d+\\s*건$/.test((e.textContent||"").trim())) || null;
+  }
+
+  function setCount(){
+    const el = findCountEl();
+    if(el) el.textContent = "총 " + STORE.size + "건";
+    const empty = document.getElementById("toEmpty");
+    if(empty) empty.style.display = STORE.size ? "none" : "";
+  }
+
+  function ensureList(){
+    let list = document.getElementById("toList");
+    if(list) return list;
+
+    const anchor = document.getElementById("toEmpty");
+    if(!anchor || !anchor.parentElement) return null;
+
+    list = document.createElement("div");
+    list.id = "toList";
+    list.style.marginTop="10px";
+    list.style.maxHeight="180px";
+    list.style.overflowY="auto";
+    anchor.parentElement.insertBefore(list, anchor.nextSibling);
+    return list;
+  }
+
+  function render(){
+    const list = ensureList();
+    if(!list) return;
+    list.innerHTML = "";
+    for(const phone of STORE){
+      const row = document.createElement("div");
+      row.style.padding="6px 10px";
+      row.style.border="1px solid rgba(15,23,42,.12)";
+      row.style.borderRadius="10px";
+      row.style.marginTop="6px";
+      row.textContent = phone;
+      list.appendChild(row);
+    }
+  }
+
+  function addPhones(phones){
+    let added = 0;
+    for(const p of phones){
+      if(STORE.size >= MAX_LIMIT) break;
+      const before = STORE.size;
+      STORE.add(p);
+      if(STORE.size !== before) added++;
+    }
+    if(phones.length && added < phones.length){
+      alert("최대 50건까지만 추가됩니다. (초과분 무시)");
+    }
+    setCount();
+    render();
+  }
+
+  function badge(){
+    if(document.getElementById("pasteDebugBadge")) return;
+    const b = document.createElement("div");
+    b.id = "pasteDebugBadge";
+    b.textContent = "PASTE_DEBUG READY";
+    b.style.position="fixed";
+    b.style.left="12px";
+    b.style.bottom="12px";
+    b.style.zIndex="999999";
+    b.style.padding="6px 10px";
+    b.style.borderRadius="10px";
+    b.style.background="rgba(0,0,0,.55)";
+    b.style.color="#fff";
+    b.style.fontSize="12px";
+    b.style.fontWeight="800";
+    document.body.appendChild(b);
+  }
+
+  function boot(){
+    badge();
+    setCount();
+    render();
+  }
+
+  if(document.readyState === "loading") document.addEventListener("DOMContentLoaded", boot);
+  else boot();
+
+  // ✅ 핵심: 어디에 붙여넣어도 잡히게 document에서 캡처
+  document.addEventListener("paste", function(ev){
+    const cd = ev.clipboardData || window.clipboardData;
+    const raw = cd ? (cd.getData("text") || "") : "";
+    const phones = extractPhones(raw);
+    if(!phones.length) return;
+
+    if(!alerted){
+      alerted = true;
+      const t = ev.target;
+      alert("붙여넣기 감지됨!\\nTAG=" + (t && t.tagName) + "\\nID=" + (t && t.id) + "\\n추출=" + phones.length + "건");
+    }
+
+    ev.preventDefault();
+    addPhones(phones);
+
+    // 입력칸이면 요약 표시
+    try{
+      if(ev.target && (ev.target.tagName==="INPUT" || ev.target.tagName==="TEXTAREA")){
+        ev.target.value = "추가됨: " + STORE.size + "건";
+      }
+    }catch(e){}
+  }, true);
+
+})();

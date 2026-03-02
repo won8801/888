@@ -36,9 +36,9 @@ def last_wi_dir():
     items = sorted([p for p in PATCHES.iterdir() if p.is_dir() and p.name.startswith("WI-")])
     return items[-1] if items else None
 
-def read_file(path: Path, max_chars=3500) -> str:
+def read_file(path: Path, max_chars=3000) -> str:
     if not path or not path.exists():
-        return ""
+        return "(파일 없음)"
     s = path.read_text(encoding="utf-8", errors="ignore")
     return s if len(s) <= max_chars else s[:max_chars] + "\n...[TRIM]..."
 
@@ -86,64 +86,19 @@ def main():
             if text in ("/start", "/help"):
                 tg_send(token, str(chat_id),
                         "OK. 명령:\n"
-                        "/status (FINAL)\n"
-                        "/diag   (DIAG)\n"
-                        "/makediag (최신 WI에 DIAG 생성)\n"
+                        "/status\n"
                         "/dryon\n"
                         "/dryoff\n"
-                        "/pr WI-XXXX | msg\n"
+                        "/pr  (최신 WI로 PR 생성)\n"
                         "그 외 메시지 = 작업요청\n")
                 continue
 
-            wi = last_wi_dir()
-
             if text == "/status":
+                wi = last_wi_dir()
                 if not wi:
                     tg_send(token, str(chat_id), "WI 없음.")
                 else:
-                    final = read_file(wi/"FINAL.patch.md")
-                    tg_send(token, str(chat_id), f"[{wi.name}]\n" + (final if final else "(FINAL 없음)"))
-                continue
-
-            if text == "/diag":
-                if not wi:
-                    tg_send(token, str(chat_id), "WI 없음.")
-                else:
-                    diag = read_file(wi/"DIAG.md")
-                    tg_send(token, str(chat_id), f"[{wi.name} DIAG]\n" + (diag if diag else "DIAG.md 없음"))
-                continue
-
-            if text == "/makediag":
-                if not wi:
-                    tg_send(token, str(chat_id), "WI 없음.")
-                    continue
-                # 최신 WI에 DIAG 생성(서버 파일에서 자동 추출)
-                H="/var/www/888.it.kr/send.html"
-                J1="/var/www/888.it.kr/assets/js/send.js"
-                J2="/var/www/888.it.kr/assets/js/send_patch.js"
-                out = wi/"DIAG.md"
-                bash = f"""
-set -e
-{PY} -m app.orchestrator "AUTO-DIAG: send.html 버튼 클릭 안됨. send.html/send.js/send_patch.js에서 클릭 이벤트/버튼 요소/스크립트 로딩 상태를 자동 추출해서 DIAG.md로 저장해."
-echo "# {wi.name} AUTO DIAG" > "{out}"
-echo "" >> "{out}"
-echo "## 1) send.html script includes" >> "{out}"
-grep -nE "<script|send_patch\\.js|send\\.js" "{H}" >> "{out}" 2>/dev/null || true
-echo "" >> "{out}"
-echo "## 2) send.html buttons" >> "{out}"
-grep -nE "<button|id=|class=" "{H}" | head -n 160 >> "{out}" 2>/dev/null || true
-echo "" >> "{out}"
-echo "## 3) send.js click handlers" >> "{out}"
-grep -nE "addEventListener\\(|onclick\\s*=|\\$\\(.*click|on\\(\\"click" "{J1}" | head -n 220 >> "{out}" 2>/dev/null || true
-echo "" >> "{out}"
-echo "## 4) send_patch.js click handlers" >> "{out}"
-grep -nE "addEventListener\\(|onclick\\s*=|\\$\\(.*click|on\\(\\"click" "{J2}" | head -n 220 >> "{out}" 2>/dev/null || true
-echo "" >> "{out}"
-echo "## 5) file stat" >> "{out}"
-ls -al "{H}" "{J1}" "{J2}" >> "{out}" 2>/dev/null || true
-"""
-                subprocess.run(["bash","-lc", bash], capture_output=True, text=True)
-                tg_send(token, str(chat_id), f"OK: DIAG 생성됨\n/diag 로 확인")
+                    tg_send(token, str(chat_id), f"[{wi.name}]\n" + read_file(wi/"FINAL.patch.md"))
                 continue
 
             if text == "/dryon":
@@ -156,25 +111,20 @@ ls -al "{H}" "{J1}" "{J2}" >> "{out}" 2>/dev/null || true
                 tg_send(token, str(chat_id), "OK: dry_run=false")
                 continue
 
-            if text.startswith("/pr"):
+            if text == "/pr":
+                wi = last_wi_dir()
                 if not wi:
                     tg_send(token, str(chat_id), "WI 없음.")
                     continue
+
+                wi_name = wi.name
+                branch = f"feature/{wi_name.lower()}"
+                title = f"{wi_name}: patch"
+                body = read_file(wi / "FINAL.patch.md", max_chars=100000)
+
                 try:
-                    parts = text.replace("/pr", "", 1).strip()
-                    if "|" in parts:
-                        wi_name, msg2 = [x.strip() for x in parts.split("|", 1)]
-                    else:
-                        wi_name, msg2 = wi.name, f"{wi.name}: patch"
-                    wi_dir = PATCHES / wi_name
-                    if not wi_dir.exists():
-                        tg_send(token, str(chat_id), f"WI 폴더 없음: {wi_name}")
-                        continue
-                    branch = f"feature/{wi_name.lower()}"
-                    title = msg2 if msg2 else f"{wi_name}: patch"
-                    body = (wi_dir / "FINAL.patch.md").read_text(encoding="utf-8", errors="ignore")
                     pr_url = pr_flow(branch=branch, base="main", title=title, body=body)
-                    tg_send(token, str(chat_id), f"PR 생성 완료:\n{pr_url}")
+                    tg_send(token, str(chat_id), f"PR 생성 완료: {pr_url}")
                 except Exception as e:
                     tg_send(token, str(chat_id), f"PR 생성 실패: {e}")
                 continue
@@ -182,9 +132,9 @@ ls -al "{H}" "{J1}" "{J2}" >> "{out}" 2>/dev/null || true
             # 일반 작업요청
             tg_send(token, str(chat_id), "작업 시작.")
             _ = run_orchestrator(text)
-            wi2 = last_wi_dir()
-            if wi2:
-                tg_send(token, str(chat_id), f"완료: {wi2.name}\n" + read_file(wi2/"FINAL.patch.md"))
+            wi = last_wi_dir()
+            if wi:
+                tg_send(token, str(chat_id), f"완료: {wi.name}\n" + read_file(wi/"FINAL.patch.md"))
             else:
                 tg_send(token, str(chat_id), "완료했지만 WI 폴더를 못 찾음.")
 
