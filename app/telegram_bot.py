@@ -2,6 +2,7 @@ import os, json, subprocess, time
 from pathlib import Path
 from dotenv import load_dotenv
 from app.utils.github_pr import pr_flow
+from app.pr_bot import handle_text
 
 ROOT = Path(".")
 PATCHES = ROOT / "patches"
@@ -83,6 +84,16 @@ def main():
                 tg_send(token, str(chat_id), "권한 없음.")
                 continue
 
+            # /pr TASK|MESSAGE (최우선)
+            # 예) /pr WI-0025|telegram pr test
+            if text.startswith("/pr"):
+                try:
+                    reply = handle_text(text)
+                    tg_send(token, str(chat_id), reply)
+                except Exception as e:
+                    tg_send(token, str(chat_id), f"PR 생성 실패: {e}")
+                continue
+
             if text in ("/start", "/help"):
                 tg_send(token, str(chat_id),
                         "OK. 명령:\n"
@@ -110,13 +121,6 @@ def main():
                 set_dry_run(False)
                 tg_send(token, str(chat_id), "OK: dry_run=false")
                 continue
-
-            if text == "/pr":
-                wi = last_wi_dir()
-                if not wi:
-                    tg_send(token, str(chat_id), "WI 없음.")
-                    continue
-
                 wi_name = wi.name
                 branch = f"feature/{wi_name.lower()}"
                 title = f"{wi_name}: patch"
