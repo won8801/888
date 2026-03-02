@@ -1,0 +1,12 @@
+{
+  "models": {
+    "manager": "gpt-5.2",
+    "front": "gpt-5.2-mini",
+    "back": "gpt-5.2-mini",
+    "qa": "gpt-5.2-nano"
+  },
+  "runtime": {
+    "dry_run": true,
+    "max_context_chars": 12000
+  }
+}

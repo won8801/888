@@ -1,0 +1,441 @@
+{
+  "project": "99sms-aiops-tool",
+  "conversation_summary": "WI-0001: 테스트: WI 폴더 생성 확인용. QA/Front/Back 문서 만들어\nWI-0002: 테스트: WI 생성 확인. 문서 만들어\nWI-0003: ㄴ\nWI-0004: hi777\nWI-0005: status\nWI-0006: s\nWI-0007: s\nWI-0008: s\nWI-0009: hi888\\\nWI-0010: hi888\nWI-0011: 1\nWI-0012: /pr\nWI-0013: /pr",
+  "wi_seq": 13,
+  "open_items": [
+    {
+      "id": "WI-0001",
+      "status": "DONE",
+      "created_at": "2026-03-02T00:54:52.036492Z",
+      "request": "테스트: WI 폴더 생성 확인용. QA/Front/Back 문서 만들어"
+    },
+    {
+      "id": "WI-0002",
+      "status": "DONE",
+      "created_at": "2026-03-02T00:54:55.261077Z",
+      "request": "테스트: WI 생성 확인. 문서 만들어"
+    },
+    {
+      "id": "WI-0003",
+      "status": "DONE",
+      "created_at": "2026-03-02T01:49:01.826829Z",
+      "request": "ㄴ"
+    },
+    {
+      "id": "WI-0004",
+      "status": "DONE",
+      "created_at": "2026-03-02T01:49:04.209547Z",
+      "request": "hi777"
+    },
+    {
+      "id": "WI-0005",
+      "status": "DONE",
+      "created_at": "2026-03-02T01:49:06.587931Z",
+      "request": "status"
+    },
+    {
+      "id": "WI-0006",
+      "status": "DONE",
+      "created_at": "2026-03-02T01:49:11.674915Z",
+      "request": "s"
+    },
+    {
+      "id": "WI-0007",
+      "status": "DONE",
+      "created_at": "2026-03-02T01:49:14.080979Z",
+      "request": "s"
+    },
+    {
+      "id": "WI-0008",
+      "status": "DONE",
+      "created_at": "2026-03-02T01:49:16.510402Z",
+      "request": "s"
+    },
+    {
+      "id": "WI-0009",
+      "status": "DONE",
+      "created_at": "2026-03-02T01:49:18.912002Z",
+      "request": "hi888\\"
+    },
+    {
+      "id": "WI-0010",
+      "status": "DONE",
+      "created_at": "2026-03-02T01:49:21.348796Z",
+      "request": "hi888"
+    },
+    {
+      "id": "WI-0011",
+      "status": "DONE",
+      "created_at": "2026-03-02T02:07:30.623963Z",
+      "request": "1"
+    },
+    {
+      "id": "WI-0012",
+      "status": "DONE",
+      "created_at": "2026-03-02T02:26:24.369590Z",
+      "request": "/pr"
+    },
+    {
+      "id": "WI-0013",
+      "status": "DONE",
+      "created_at": "2026-03-02T02:43:05.064339Z",
+      "request": "/pr"
+    }
+  ],
+  "decisions": [],
+  "last_outputs": {
+    "WI-0001": {
+      "route": {
+        "qa": true,
+        "front": true,
+        "back": true
+      },
+      "dir": "patches/WI-0001",
+      "ts": "2026-03-02T00:54:52.037092Z"
+    },
+    "WI-0002": {
+      "route": {
+        "qa": true,
+        "front": true,
+        "back": true
+      },
+      "dir": "patches/WI-0002",
+      "ts": "2026-03-02T00:54:55.261831Z"
+    },
+    "WI-0003": {
+      "route": {
+        "qa": true,
+        "front": true,
+        "back": true
+      },
+      "dir": "patches/WI-0003",
+      "ts": "2026-03-02T01:49:01.827498Z"
+    },
+    "WI-0004": {
+      "route": {
+        "qa": true,
+        "front": true,
+        "back": true
+      },
+      "dir": "patches/WI-0004",
+      "ts": "2026-03-02T01:49:04.210259Z"
+    },
+    "WI-0005": {
+      "route": {
+        "qa": true,
+        "front": true,
+        "back": true
+      },
+      "dir": "patches/WI-0005",
+      "ts": "2026-03-02T01:49:06.588715Z"
+    },
+    "WI-0006": {
+      "route": {
+        "qa": true,
+        "front": true,
+        "back": true
+      },
+      "dir": "patches/WI-0006",
+      "ts": "2026-03-02T01:49:11.675745Z"
+    },
+    "WI-0007": {
+      "route": {
+        "qa": true,
+        "front": true,
+        "back": true
+      },
+      "dir": "patches/WI-0007",
+      "ts": "2026-03-02T01:49:14.081823Z"
+    },
+    "WI-0008": {
+      "route": {
+        "qa": true,
+        "front": true,
+        "back": true
+      },
+      "dir": "patches/WI-0008",
+      "ts": "2026-03-02T01:49:16.511255Z"
+    },
+    "WI-0009": {
+      "route": {
+        "qa": true,
+        "front": true,
+        "back": true
+      },
+      "dir": "patches/WI-0009",
+      "ts": "2026-03-02T01:49:18.912897Z"
+    },
+    "WI-0010": {
+      "route": {
+        "qa": true,
+        "front": true,
+        "back": true
+      },
+      "dir": "patches/WI-0010",
+      "ts": "2026-03-02T01:49:21.349700Z"
+    },
+    "WI-0011": {
+      "route": {
+        "qa": true,
+        "front": true,
+        "back": true
+      },
+      "dir": "patches/WI-0011",
+      "ts": "2026-03-02T02:07:30.624908Z"
+    },
+    "WI-0012": {
+      "route": {
+        "qa": true,
+        "front": true,
+        "back": true
+      },
+      "dir": "patches/WI-0012",
+      "ts": "2026-03-02T02:26:24.370590Z"
+    },
+    "WI-0013": {
+      "route": {
+        "qa": true,
+        "front": true,
+        "back": true
+      },
+      "dir": "patches/WI-0013",
+      "ts": "2026-03-02T02:43:05.065399Z"
+    }
+  },
+  "history": [
+    {
+      "ts": "2026-03-02T00:54:52.036506Z",
+      "kind": "wi_created",
+      "payload": {
+        "id": "WI-0001",
+        "status": "DONE",
+        "created_at": "2026-03-02T00:54:52.036492Z",
+        "request": "테스트: WI 폴더 생성 확인용. QA/Front/Back 문서 만들어"
+      }
+    },
+    {
+      "ts": "2026-03-02T00:54:52.037105Z",
+      "kind": "wi_done",
+      "payload": {
+        "id": "WI-0001",
+        "dir": "patches/WI-0001"
+      }
+    },
+    {
+      "ts": "2026-03-02T00:54:55.261090Z",
+      "kind": "wi_created",
+      "payload": {
+        "id": "WI-0002",
+        "status": "DONE",
+        "created_at": "2026-03-02T00:54:55.261077Z",
+        "request": "테스트: WI 생성 확인. 문서 만들어"
+      }
+    },
+    {
+      "ts": "2026-03-02T00:54:55.261845Z",
+      "kind": "wi_done",
+      "payload": {
+        "id": "WI-0002",
+        "dir": "patches/WI-0002"
+      }
+    },
+    {
+      "ts": "2026-03-02T01:49:01.826842Z",
+      "kind": "wi_created",
+      "payload": {
+        "id": "WI-0003",
+        "status": "DONE",
+        "created_at": "2026-03-02T01:49:01.826829Z",
+        "request": "ㄴ"
+      }
+    },
+    {
+      "ts": "2026-03-02T01:49:01.827510Z",
+      "kind": "wi_done",
+      "payload": {
+        "id": "WI-0003",
+        "dir": "patches/WI-0003"
+      }
+    },
+    {
+      "ts": "2026-03-02T01:49:04.209561Z",
+      "kind": "wi_created",
+      "payload": {
+        "id": "WI-0004",
+        "status": "DONE",
+        "created_at": "2026-03-02T01:49:04.209547Z",
+        "request": "hi777"
+      }
+    },
+    {
+      "ts": "2026-03-02T01:49:04.210272Z",
+      "kind": "wi_done",
+      "payload": {
+        "id": "WI-0004",
+        "dir": "patches/WI-0004"
+      }
+    },
+    {
+      "ts": "2026-03-02T01:49:06.587946Z",
+      "kind": "wi_created",
+      "payload": {
+        "id": "WI-0005",
+        "status": "DONE",
+        "created_at": "2026-03-02T01:49:06.587931Z",
+        "request": "status"
+      }
+    },
+    {
+      "ts": "2026-03-02T01:49:06.588729Z",
+      "kind": "wi_done",
+      "payload": {
+        "id": "WI-0005",
+        "dir": "patches/WI-0005"
+      }
+    },
+    {
+      "ts": "2026-03-02T01:49:11.674930Z",
+      "kind": "wi_created",
+      "payload": {
+        "id": "WI-0006",
+        "status": "DONE",
+        "created_at": "2026-03-02T01:49:11.674915Z",
+        "request": "s"
+      }
+    },
+    {
+      "ts": "2026-03-02T01:49:11.675759Z",
+      "kind": "wi_done",
+      "payload": {
+        "id": "WI-0006",
+        "dir": "patches/WI-0006"
+      }
+    },
+    {
+      "ts": "2026-03-02T01:49:14.080993Z",
+      "kind": "wi_created",
+      "payload": {
+        "id": "WI-0007",
+        "status": "DONE",
+        "created_at": "2026-03-02T01:49:14.080979Z",
+        "request": "s"
+      }
+    },
+    {
+      "ts": "2026-03-02T01:49:14.081837Z",
+      "kind": "wi_done",
+      "payload": {
+        "id": "WI-0007",
+        "dir": "patches/WI-0007"
+      }
+    },
+    {
+      "ts": "2026-03-02T01:49:16.510415Z",
+      "kind": "wi_created",
+      "payload": {
+        "id": "WI-0008",
+        "status": "DONE",
+        "created_at": "2026-03-02T01:49:16.510402Z",
+        "request": "s"
+      }
+    },
+    {
+      "ts": "2026-03-02T01:49:16.511269Z",
+      "kind": "wi_done",
+      "payload": {
+        "id": "WI-0008",
+        "dir": "patches/WI-0008"
+      }
+    },
+    {
+      "ts": "2026-03-02T01:49:18.912016Z",
+      "kind": "wi_created",
+      "payload": {
+        "id": "WI-0009",
+        "status": "DONE",
+        "created_at": "2026-03-02T01:49:18.912002Z",
+        "request": "hi888\\"
+      }
+    },
+    {
+      "ts": "2026-03-02T01:49:18.912911Z",
+      "kind": "wi_done",
+      "payload": {
+        "id": "WI-0009",
+        "dir": "patches/WI-0009"
+      }
+    },
+    {
+      "ts": "2026-03-02T01:49:21.348810Z",
+      "kind": "wi_created",
+      "payload": {
+        "id": "WI-0010",
+        "status": "DONE",
+        "created_at": "2026-03-02T01:49:21.348796Z",
+        "request": "hi888"
+      }
+    },
+    {
+      "ts": "2026-03-02T01:49:21.349714Z",
+      "kind": "wi_done",
+      "payload": {
+        "id": "WI-0010",
+        "dir": "patches/WI-0010"
+      }
+    },
+    {
+      "ts": "2026-03-02T02:07:30.623977Z",
+      "kind": "wi_created",
+      "payload": {
+        "id": "WI-0011",
+        "status": "DONE",
+        "created_at": "2026-03-02T02:07:30.623963Z",
+        "request": "1"
+      }
+    },
+    {
+      "ts": "2026-03-02T02:07:30.624923Z",
+      "kind": "wi_done",
+      "payload": {
+        "id": "WI-0011",
+        "dir": "patches/WI-0011"
+      }
+    },
+    {
+      "ts": "2026-03-02T02:26:24.369603Z",
+      "kind": "wi_created",
+      "payload": {
+        "id": "WI-0012",
+        "status": "DONE",
+        "created_at": "2026-03-02T02:26:24.369590Z",
+        "request": "/pr"
+      }
+    },
+    {
+      "ts": "2026-03-02T02:26:24.370605Z",
+      "kind": "wi_done",
+      "payload": {
+        "id": "WI-0012",
+        "dir": "patches/WI-0012"
+      }
+    },
+    {
+      "ts": "2026-03-02T02:43:05.064353Z",
+      "kind": "wi_created",
+      "payload": {
+        "id": "WI-0013",
+        "status": "DONE",
+        "created_at": "2026-03-02T02:43:05.064339Z",
+        "request": "/pr"
+      }
+    },
+    {
+      "ts": "2026-03-02T02:43:05.065414Z",
+      "kind": "wi_done",
+      "payload": {
+        "id": "WI-0013",
+        "dir": "patches/WI-0013"
+      }
+    }
+  ]
+}
