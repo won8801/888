@@ -8,7 +8,7 @@ def sh(cmd: list[str]) -> str:
     return (p.stdout or "").strip()
 
 def git_set_remote(owner: str, repo: str, token: str):
-    url = f"https://{token}@github.com/{owner}/{repo}.git"
+    url = f"https://{owner}:{token}@github.com/{owner}/{repo}.git"
     try:
         sh(["git", "remote", "add", "origin", url])
     except Exception:
