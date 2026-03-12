@@ -85,6 +85,22 @@ def main():
                 continue
 
             # === PR 명령 최우선 처리 ===
+            # 1) /pr            -> 최신 WI 폴더로 자동 PR
+            # 2) /pr A|B        -> A 작업명 + B 커밋메시지로 PR
+            if text.strip() == "/pr":
+                wi = last_wi_dir()
+                if not wi:
+                    tg_send(token, str(chat_id), "WI 없음.")
+                    continue
+                wi_name = wi.name
+                # 최신 WI로 PR 생성 (커밋메시지는 고정)
+                try:
+                    reply = handle_text(f"/pr {wi_name}|auto PR from latest WI")
+                    tg_send(token, str(chat_id), reply)
+                except Exception as e:
+                    tg_send(token, str(chat_id), f"PR 생성 실패: {e}")
+                continue
+
             if text.startswith("/pr"):
                 try:
                     reply = handle_text(text)
